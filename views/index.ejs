@@ -1,0 +1,45 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Members-Only club house</title>
+</head>
+<body>
+  <h1>The Secret Clubhouse</h1>
+
+  <% if (currentUser) { %>
+    <p>Logged in as: <strong><%= currentUser.username %></strong></p>
+    <% if (currentUser.is_admin) { %><p style="color: red;">[ADMIN MODE ACTIVE]</p><% } %>
+    <a href="/logout">Log Out</a> | 
+    <a href="/new-message">Create Message</a>
+    <% if (!currentUser.membership_status) { %>
+      | <a href="/join-club">Join the Club</a>
+    <% } else { %>
+      | <span style="color: green;">Club Member</span>
+    <% } %>
+  <% } else { %>
+   <p style="gap: 10px;"> <a href="/login">Log In</a>  <a href="/sign-up">Sign Up</a> </p>
+  <% } %>
+
+  <hr>
+  <h2>Clubhouse Feed</h2>
+  <% messages.forEach(msg => { %>
+    <div style="border: 1px solid #333; margin-bottom: 15px; padding: 15px;">
+      <h3><%= msg.title %></h3>
+      <p><%= msg.text %></p>
+      
+      <% if (currentUser && currentUser.membership_status) { %>
+        <p><small>Posted by: <%= msg.first_name %> <%= msg.last_name %> (<%= msg.username %>) on <%= msg.timestamp %></small></p>
+      <% } else { %>
+        <p><small>Posted by: <em>Anonymous (Join Club to unlock author names)</em></small></p>
+      <% } %>
+
+      <% if (currentUser && currentUser.is_admin) { %>
+        <form action="/message/<%= msg.id %>/delete" method="POST">
+          <button type="submit" style="color: red;">Delete Message</button>
+        </form>
+      <% } %>
+    </div>
+  <% }) %>
+</body>
+</html>

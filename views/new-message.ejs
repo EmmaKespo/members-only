@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Create Message</title>
+</head>
+<body>
+  <h1>Write a Secret Story</h1>
+  <a href="/">Back to home</a>
+  <hr>
+
+  <form action="/new-message" method="POST">
+    <label>Title:<br><input type="text" name="title" required style="width: 300px;"></label><br><br>
+    <label>Text Content:<br><textarea name="text" required style="width: 300px; height: 100px;"></textarea></label><br><br>
+    <button type="submit">Publish Anonymously</button>
+  </form>
+</body>
+</html>

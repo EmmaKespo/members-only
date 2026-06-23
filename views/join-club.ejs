@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Join the Club</title>
+</head>
+<body>
+  <h1>Unlock VIP Club Membership</h1>
+  <a href="/">Back to home</a>
+  <hr>
+
+  <% if (error) { %>
+    <p style="color: red;"><%= error %></p>
+  <% } %>
+
+  <form action="/join-club" method="POST">
+    <p>Enter the secret passcode to see authors and post timestamps:</p>
+    <label>Secret Passcode: <input type="text" name="passcode" required></label><br><br>
+    <button type="submit">Submit Passcode</button>
+  </form>
+</body>
+</html>

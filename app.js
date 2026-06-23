@@ -80,4 +80,4 @@ app.use('/', authRouter);
 app.use('/', messageRouter);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Exclusive Clubhouse processing on port ${PORT}!`));
+app.listen(PORT, () => console.log(`Exclusive Clubhouse processing on port http://localhost:${PORT}!`));

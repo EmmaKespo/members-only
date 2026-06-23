@@ -1,4 +1,4 @@
-// db/queries.js
+
 const pool = require('./pool');
 
 // --- USER MANAGEMENT QUERIES ---
@@ -16,6 +16,7 @@ async function getUserByUsername(username) {
   const { rows } = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
   return rows;
 }
+
 
 // Locate user profile by serialized primary key index inside active session
 async function getUserById(id) {

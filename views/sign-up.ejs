@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sign Up</title>
+</head>
+<body>
+  <h1>Create Account</h1>
+  <a href="/">Back to home</a>
+  <hr>
+
+  <% if (errors) { %>
+    <ul style="color: red;">
+      <% errors.forEach(err => { %>
+        <li><%= err.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <form action="/sign-up" method="POST">
+    <label>First Name: <input type="text" name="first_name" required></label><br><br>
+    <label>Last Name: <input type="text" name="last_name" required></label><br><br>
+    <label>Email (Username): <input type="email" name="username" required></label><br><br>
+    <label>Password: <input type="password" name="password" required></label><br><br>
+    <label>Confirm Password: <input type="password" name="confirmPassword" required></label><br><br>
+    <label><input type="checkbox" name="is_admin"> Is Admin User?</label><br><br>
+    <button type="submit">Register</button>
+  </form>
+</body>
+</html>

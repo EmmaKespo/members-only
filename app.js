@@ -1,4 +1,4 @@
-// app.js
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
@@ -9,7 +9,7 @@ const db = require('./db/queries');
 const authRouter = require('./routes/authRouter');
 const messageRouter = require('./routes/messageRouter');
 
-require('dotenv').config();
+
 
 const app = express();
 
@@ -80,4 +80,4 @@ app.use('/', authRouter);
 app.use('/', messageRouter);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Exclusive Clubhouse processing on port http://localhost:${PORT}!`));
+app.listen(PORT, () => console.log(`Exclusive Clubhouse processing on port http://localhost:${PORT}`));
